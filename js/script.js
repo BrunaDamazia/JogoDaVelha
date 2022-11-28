@@ -2,12 +2,12 @@ let jogador,
   vencedor = null
 let jogadorSelecionado = document.getElementById('jogador-selecionado')
 let vencedorSelecionado = document.getElementById('vencedor-selecionado')
-let quadrados = document.getElementsByClassName('quadrado')
+// let quadrados = document.getElementsByClassName('quadrado')
 
 mudarJogador('X')
 
 function escolherQuadrado (id) {
-  if (vencedor !== null){
+  if (vencedor !== null) {
     return
   }
 
@@ -45,55 +45,56 @@ function checaVencedor () {
   let quadrado9 = document.getElementById(9)
 
   if (checaSequencia(quadrado1, quadrado2, quadrado3)) {
-    mudarCorQuadrado(quadrado1, quadrado2, quadrado3)
+    mudaCorQuadrado(quadrado1, quadrado2, quadrado3)
     mudarVencedor(quadrado1)
     return
   }
 
   if (checaSequencia(quadrado4, quadrado5, quadrado6)) {
-    mudarCorQuadrado(quadrado4, quadrado5, quadrado6)
+    mudaCorQuadrado(quadrado4, quadrado5, quadrado6)
     mudarVencedor(quadrado4)
     return
   }
 
   if (checaSequencia(quadrado7, quadrado8, quadrado9)) {
-    mudarCorQuadrado(quadrado7, quadrado8, quadrado9)
+    mudaCorQuadrado(quadrado7, quadrado8, quadrado9)
     mudarVencedor(quadrado7)
     return
   }
 
   if (checaSequencia(quadrado1, quadrado4, quadrado7)) {
-    mudarCorQuadrado(quadrado1, quadrado4, quadrado7)
-    mudarVencedor(quadrado4)
+    mudaCorQuadrado(quadrado1, quadrado4, quadrado7)
+    mudarVencedor(quadrado1)
+    return
   }
 
   if (checaSequencia(quadrado2, quadrado5, quadrado8)) {
-    mudaCorQuadrado(quadrado2, quadrado5, quadrado8);
-    mudarVencedor(quadrado2);
-    return;
+    mudaCorQuadrado(quadrado2, quadrado5, quadrado8)
+    mudarVencedor(quadrado2)
+    return
+  }
+
+  if (checaSequencia(quadrado3, quadrado6, quadrado9)) {
+    mudaCorQuadrado(quadrado3, quadrado6, quadrado9)
+    mudarVencedor(quadrado3)
+    return
+  }
+
+  if (checaSequencia(quadrado1, quadrado5, quadrado9)) {
+    mudaCorQuadrado(quadrado1, quadrado5, quadrado9)
+    mudarVencedor(quadrado1)
+    return
+  }
+
+  if (checaSequencia(quadrado3, quadrado5, quadrado7)) {
+    mudaCorQuadrado(quadrado3, quadrado5, quadrado7)
+    mudarVencedor(quadrado3)
+  }
 }
 
-if (checaSequencia(quadrado3, quadrado6, quadrado9)) {
-    mudaCorQuadrado(quadrado3, quadrado6, quadrado9);
-    mudarVencedor(quadrado3);
-    return;
-}
-
-if (checaSequencia(quadrado1, quadrado5, quadrado9)) {
-    mudaCorQuadrado(quadrado1, quadrado5, quadrado9);
-    mudarVencedor(quadrado1);
-    return;
-}
-
-if (checaSequencia(quadrado3, quadrado5, quadrado7)) {
-    mudaCorQuadrado(quadrado3, quadrado5, quadrado7);
-    mudarVencedor(quadrado3);
-}
-}
-
-function mudarVencedor(quadrado) {
-  vencedor = quadrado.innerHTML;
-  vencedorSelecionado.innerHTML = vencedor;
+function mudarVencedor (quadrado) {
+  vencedor = quadrado.innerHTML
+  vencedorSelecionado.innerHTML = vencedor
 }
 
 function mudaCorQuadrado (quadrado1, quadrado2, quadrado3) {
@@ -115,17 +116,16 @@ function checaSequencia (quadrado1, quadrado2, quadrado3) {
   return eigual
 }
 
-function reiniciar()
-{
-    vencedor = null;
-    vencedorSelecionado.innerHTML = '';
+function reiniciar () {
+  vencedor = null
+  vencedorSelecionado.innerHTML = ''
 
-    for (var i = 1; i <= 9; i++) {
-        var quadrado = document.getElementById(i);
-        quadrado.style.background = '#eee';
-        quadrado.style.color = '#eee';
-        quadrado.innerHTML = '-';
-    }
+  for (var i = 1; i <= 9; i++) {
+    var quadrado = document.getElementById(i)
+    quadrado.style.background = '#eee'
+    quadrado.style.color = '#eee'
+    quadrado.innerHTML = '-'
+  }
 
-    mudarJogador('X');
+  mudarJogador('X')
 }
